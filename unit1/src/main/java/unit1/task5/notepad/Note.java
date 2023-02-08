@@ -1,4 +1,4 @@
-package org.example.task5.notepad;
+package unit1.task5.notepad;
 
 public class Note {
     private String note;

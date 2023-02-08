@@ -1,4 +1,4 @@
-package org.example.task2;
+package unit1.task2;
 
 public class App {
 

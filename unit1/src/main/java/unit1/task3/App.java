@@ -1,4 +1,4 @@
-package org.example.task3;
+package unit1.task3;
 
 import java.util.Random;
 

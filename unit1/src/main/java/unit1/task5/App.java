@@ -1,7 +1,7 @@
-package org.example.task5;
+package unit1.task5;
 
-import org.example.task5.notepad.Note;
-import org.example.task5.notepad.NotePad;
+import unit1.task5.notepad.Note;
+import unit1.task5.notepad.NotePad;
 
 public class App {
 
