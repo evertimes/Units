@@ -1,4 +1,4 @@
-package task2.office_supplies;
+package unit2.task4.office_supplies;
 
 public class Notepad extends OfficeSupply {
 

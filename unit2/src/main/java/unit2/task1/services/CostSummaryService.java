@@ -1,6 +1,6 @@
-package unit1.services;
+package unit2.task1.services;
 
-import unit1.dto.Employee;
+import unit2.task1.dto.Employee;
 
 public class CostSummaryService {
 

@@ -1,4 +1,4 @@
-package unit1.dto;
+package unit2.task1.dto;
 
 import java.util.Objects;
 

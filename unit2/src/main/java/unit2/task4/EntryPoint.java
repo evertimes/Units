@@ -1,12 +1,12 @@
-package task4;
+package unit2.task4;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import task4.office_supplies.Notepad;
-import task4.office_supplies.OfficeSupply;
-import task4.office_supplies.Pen;
-import task4.office_supplies.Scissors;
+import unit2.task4.office_supplies.Notepad;
+import unit2.task4.office_supplies.OfficeSupply;
+import unit2.task4.office_supplies.Pen;
+import unit2.task4.office_supplies.Scissors;
 
 public class EntryPoint {
 

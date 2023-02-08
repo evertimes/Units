@@ -1,8 +1,8 @@
-package unit1;
+package unit2.task1;
 
-import unit1.dto.Employee;
-import unit1.dto.OfficeSupply;
-import unit1.services.CostSummaryService;
+import unit2.task1.dto.Employee;
+import unit2.task1.dto.OfficeSupply;
+import unit2.task1.services.CostSummaryService;
 
 public class EntryPoint {
 
