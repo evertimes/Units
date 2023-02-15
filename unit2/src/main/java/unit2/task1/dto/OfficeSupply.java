@@ -55,19 +55,13 @@ public class OfficeSupply {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = name != null ? name.hashCode() : 0;
-        temp = Double.doubleToLongBits(cost);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        int nameHashCode = name != null ? name.hashCode() : 0;
+        long temp = Double.doubleToLongBits(cost);
+        return 31 * nameHashCode + (int) (temp ^ (temp >>> 32));
     }
 
     @Override
     public String toString() {
-        return "OfficeSupply{" +
-            "name='" + name + '\'' +
-            ", cost=" + cost +
-            '}';
+        return String.format("OfficeSupply{name='%s', cost=%s}",name,cost);
     }
 }
