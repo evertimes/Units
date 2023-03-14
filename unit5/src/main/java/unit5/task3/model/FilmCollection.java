@@ -7,6 +7,8 @@ import unit5.task3.model.domain.Film;
 
 public class FilmCollection implements Serializable {
 
+    private static final long serialVersionUID = -3096507979791133158L;
+
     private List<Film> films = new ArrayList<>();
 
     public List<Film> getFilms() {

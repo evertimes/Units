@@ -8,6 +8,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class Film implements Serializable {
 
+    private static final long serialVersionUID = -9211510976058567207L;
+
     private String filmName;
     private Actor mainActor;
 }
