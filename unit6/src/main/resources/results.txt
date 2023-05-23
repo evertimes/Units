@@ -1,0 +1,35 @@
+
+Benchmark              (iterations)  Mode  Cnt   Score    Error  Units
+App.addEndArray               50000  avgt   15  ≈ 10⁻⁴           ms/op
+App.addEndArray              500000  avgt   15   0,002 ±  0,001  ms/op
+App.addEndArray             1000000  avgt   15   0,002 ±  0,001  ms/op
+App.addEndLinked              50000  avgt   15  ≈ 10⁻⁴           ms/op
+App.addEndLinked             500000  avgt   15   0,001 ±  0,001  ms/op
+App.addEndLinked            1000000  avgt   15   0,001 ±  0,001  ms/op
+//Добавление в конец LikedList быстрее, т.к. нет необходимости расширять массив.
+
+App.addMiddleArray            50000  avgt   15   0,002 ±  0,001  ms/op
+App.addMiddleArray           500000  avgt   15   0,187 ±  0,045  ms/op
+App.addMiddleArray          1000000  avgt   15   0,473 ±  0,169  ms/op
+App.addMiddleLinked           50000  avgt   15   0,063 ±  0,005  ms/op
+App.addMiddleLinked          500000  avgt   15   0,800 ±  0,025  ms/op
+App.addMiddleLinked         1000000  avgt   15   1,589 ±  0,046  ms/op
+//Добавление в середину LinkedList на большом числе элементов достаточно медленно,
+//т.к. тратится много ресурсов на индексацию
+
+App.containsArray             50000  avgt   15   0,049 ±  0,002  ms/op
+App.containsArray            500000  avgt   15   0,831 ±  0,075  ms/op
+App.containsArray           1000000  avgt   15   1,694 ±  0,135  ms/op
+App.containsLinked            50000  avgt   15   0,175 ±  0,005  ms/op
+App.containsLinked           500000  avgt   15   1,753 ±  0,074  ms/op
+App.containsLinked          1000000  avgt   15   3,504 ±  0,101  ms/op
+//Contains использует обычную линейную сортировку в обоих реализациях,
+//но при этом, в ArrayList производительность оказалась выше.
+
+App.removeValueArray          50000  avgt   15   0,049 ±  0,002  ms/op
+App.removeValueArray         500000  avgt   15   0,781 ±  0,018  ms/op
+App.removeValueArray        1000000  avgt   15   1,685 ±  0,171  ms/op
+App.removeValueLinked         50000  avgt   15   0,179 ±  0,007  ms/op
+App.removeValueLinked        500000  avgt   15   1,725 ±  0,044  ms/op
+App.removeValueLinked       1000000  avgt   15   3,537 ±  0,125  ms/op
+//Удаление очень похоже на contains и также использует линейный поиск. поэтому результат почти аналогичен.
