@@ -12,6 +12,6 @@ public class ForkJoinQuickSort<T extends Comparable<T>> implements QuickSort<T> 
 
     @Override
     public void sort(List<T> collection) {
-        forkJoinPool.invoke(new RecursiveSortTask<>(collection, 0, collection.size() - 1));
+        forkJoinPool.invoke(new RecursiveSortAction<>(collection, 0, collection.size() - 1));
     }
 }
