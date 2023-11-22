@@ -20,13 +20,13 @@ public class AddressResource {
 
     private AddressService addressService;
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(summary = "getAddressList")
     public List<AddressDto> getAddressList() {
         return addressService.getAddresses();
     }
 
-    @PostMapping("/")
+    @PostMapping
     @Operation(summary = "addAddress")
     public void addAddress(@RequestBody AddressDto addressDto) {
         addressService.addAddress(addressDto);

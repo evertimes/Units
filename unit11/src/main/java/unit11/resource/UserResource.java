@@ -33,7 +33,7 @@ public class UserResource {
         userService.updateUser(id, usersDto);
     }
 
-    @PostMapping("/")
+    @PostMapping
     @Operation(summary = "addUser")
     public void addUser(@RequestBody UserDtoRequest usersDto){
         userService.addUser(usersDto);

@@ -34,7 +34,7 @@ public class CarResource {
         carService.updateCar(id, carDto);
     }
 
-    @PostMapping("/")
+    @PostMapping
     @Operation(summary = "addCar")
     public void addCar(@RequestBody CarDtoRequest carDto){
         carService.addCar(carDto);
