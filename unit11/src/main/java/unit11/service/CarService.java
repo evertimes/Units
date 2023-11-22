@@ -1,6 +1,7 @@
 package unit11.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import unit11.data.domain.CarsEntity;
 import unit11.data.dto.CarDtoRequest;
 import unit11.data.dto.CarDtoResponse;
-import unit11.data.dto.UserCarResponse;
 import unit11.repository.CarsRepository;
 
 @Service
@@ -17,11 +17,13 @@ public class CarService {
 
     private CarsRepository carsRepository;
 
+    @Transactional
     public CarDtoResponse getCar(@PathVariable("carId") int id) {
         var car = carsRepository.getReferenceById(id);
         return new CarDtoResponse(car.getId(), car.getNumber(), car.getBrand());
     }
 
+    @Transactional
     public void updateCar(@PathVariable("carId") int id, @RequestBody CarDtoRequest carDto) {
         var car = carsRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         car.setBrand(carDto.getBrand());
@@ -29,6 +31,7 @@ public class CarService {
         carsRepository.save(car);
     }
 
+    @Transactional
     public void addCar(@RequestBody CarDtoRequest carDto) {
         var carEntity = CarsEntity.builder().brand(carDto.getBrand()).number(carDto.getNumber()).build();
         carsRepository.save(carEntity);

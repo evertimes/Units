@@ -21,12 +21,6 @@ public class AddressService {
         addressRepository.save(AddressEntity.builder().address(addressDto.getAddress()).build());
     }
 
-    public void updateAddress(AddressDto addressDto, String addressString) {
-        var address = addressRepository.getReferenceById(addressString);
-        address.setAddress(addressDto.getAddress());
-        addressRepository.save(address);
-    }
-
     public void deleteAddress(String address) {
         addressRepository.deleteById(address);
     }

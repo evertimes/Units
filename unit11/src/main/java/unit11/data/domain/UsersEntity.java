@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,6 +23,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
 
 @Table(name = "users")
@@ -44,7 +46,7 @@ public class UsersEntity {
     @JsonManagedReference
     @JsonAlias("address")
     private AddressEntity address;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "users_cars",
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "car_id")
@@ -79,11 +81,13 @@ public class UsersEntity {
     }
 
     public void addCar(CarsEntity e){
-        cars.add(e);//e.addUser(this);
+        if(cars == null){
+            cars = new HashSet<>();
+        }
+        cars.add(e);
     }
 
     public void removeCar(CarsEntity e){
         cars.remove(e);
-        //e.removeUser(this);
     }
 }
