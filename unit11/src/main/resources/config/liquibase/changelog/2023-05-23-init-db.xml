@@ -1,0 +1,55 @@
+<databaseChangeLog
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet id="init" author="evertimes">
+
+    <createTable tableName="addresses">
+      <column name="address" type="varchar(50)">
+        <constraints nullable="false" primaryKey="true" unique="true"/>
+      </column>
+      <column name="deleted" type="boolean" defaultValue="false"/>
+      <column name="version" type="int" defaultValue="1">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createSequence incrementBy="1" sequenceName="cars_sequence" startValue="1"/>
+    <createTable tableName="cars">
+      <column name="id" type="int">
+        <constraints nullable="false" primaryKey="true" unique="true"/>
+      </column>
+      <column name="number" type="varchar(8)"/>
+      <column name="brand" type="varchar(30)"/>
+    </createTable>
+
+    <createSequence incrementBy="1" sequenceName="users_sequence" startValue="1"/>
+    <createTable tableName="users">
+      <column name="id" type="int">
+        <constraints nullable="false" primaryKey="true" unique="true"/>
+      </column>
+      <column name="name" type="varchar(50)"/>
+      <column name="address" type="varchar(50)"/>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="users" baseColumnNames="address"
+      constraintName="fk_user_on_addresses" referencedTableName="addresses" referencedColumnNames="address"/>
+
+    <createTable tableName="users_cars">
+      <column name="user_id" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="car_id" type="int">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+    <addPrimaryKey tableName="users_cars" columnNames="user_id,car_id"/>
+    <addForeignKeyConstraint baseTableName="users_cars" baseColumnNames="user_id"
+      constraintName="fk_user_cars_on_users" referencedTableName="users" referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="users_cars" baseColumnNames="car_id"
+      constraintName="fk_user_cars_on_cars" referencedTableName="cars" referencedColumnNames="id"/>
+  </changeSet>
+
+
+</databaseChangeLog>
